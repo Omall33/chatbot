@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Chatbot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2>AI Dashboard</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#chatbot">Chatbot</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <h1>Welcome to Your Dashboard</h1>
+        <p>Manage and interact with your chatbot here.</p>
+      </div>
+
+      <!-- Chatbot Content -->
+      <div class="content" id="chatbot">
+        <h2>Chatbot Interface</h2>
+        <div class="chat-container">
+          <div class="chatbox">
+            <div class="chat-header">
+              <h3>Chat with AI</h3>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+              <!-- Messages will appear here -->
+            </div>
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button id="send-btn">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
