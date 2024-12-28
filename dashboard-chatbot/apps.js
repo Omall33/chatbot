@@ -7,20 +7,29 @@ const chatMessages = document.getElementById('chat-messages');
 
 // Fungsi untuk mengirim pesan ke OpenAI API
 async function sendMessageToChatGPT(message) {
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${Ask-proj-DwvqvnrYriO5G5TjIm_znX3IRA-H5vST8-vR3Y9w7toIA52jK3CAj2sMaqSVYItGbxqF-KWC54T3BlbkFJvnwf-_xVH64QU5Wokf8h0N-APJXkmK8w5kmZ8MYhccyhRRikAgzADAWJYYQIwvEsgD6k6NoyIA}`,
-    },
-    body: JSON.stringify({
-      model: "gpt-4",  // Model yang digunakan, bisa juga ganti ke gpt-3.5
-      messages: [{ role: "user", content: message }],
-    }),
-  });
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${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}`,  // Gunakan API Key Anda di sini
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5",  // Model yang digunakan, bisa juga ganti ke gpt-3.5
+        messages: [{ role: "user", content: message }],
+      }),
+    });
 
-  const data = await response.json();
-  return data.choices[0].message.content.trim();
+    if (!response.ok) {
+      throw new Error("Failed to fetch response from OpenAI API");
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content.trim();
+  } catch (error) {
+    console.error("Error sending message to OpenAI:", error);
+    return "Maaf, terjadi kesalahan. Coba lagi nanti.";
+  }
 }
 
 // Fungsi untuk menampilkan pesan di layar
